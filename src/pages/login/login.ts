@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {NavController, NavParams} from 'ionic-angular';
+import {EventsPage} from '../events/events';
 
 /**
  * Generated class for the LoginPage page.
@@ -19,6 +20,11 @@ export class LoginPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
+
+  }
+
+  onSkip() {
+    this.navCtrl.setRoot(EventsPage, {}, {animate: true, direction: 'forward'});
   }
 
 }

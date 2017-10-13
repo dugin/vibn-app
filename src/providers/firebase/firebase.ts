@@ -12,10 +12,17 @@ import {AngularFireAuth} from 'angularfire2/auth';
 @Injectable()
 export class FirebaseProvider {
 
+  events = 'events';
+
   constructor(public af: AngularFirestore, public auth: AngularFireAuth) {
 
     console.log('Hello FirebaseProvider Provider');
 
+  }
+
+
+  getAllEvents() {
+   return this.af.collection(this.events).valueChanges();
   }
 
 }

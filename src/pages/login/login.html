@@ -5,11 +5,19 @@
   Ionic pages and navigation.
 -->
 
-<ion-content>
-  <h1>Login Page</h1>
+<ion-content class="LoginPage">
 
+  <div class="layer">
+  </div>
 
-  <facebook-login>
-  </facebook-login>
+  <div class="logo-wrapper">
+    <img class="logo" src="assets/icon/logo.png" alt="">
+    <h1 class="logo-name">Vibn</h1>
+  </div>
+  <button class="skip--btn" color="light" (click)="onSkip()" ion-button clear>pular</button>
+
+  <div class="facebook--btn">
+    <facebook-login></facebook-login>
+  </div>
 
 </ion-content>

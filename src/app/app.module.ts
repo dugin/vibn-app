@@ -10,11 +10,15 @@ import {AngularFireModule} from 'angularfire2';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import {AngularFirestoreModule} from 'angularfire2/firestore';
 import {ENV} from '@app/env';
+import {EventsPage} from '../pages/events/events';
+import {EventDetailPage} from '../pages/event-detail/event-detail';
 
 @NgModule({
   declarations: [
     MyApp,
-    LoginPage
+    LoginPage,
+    EventsPage,
+    EventDetailPage
   ],
   imports: [
     BrowserModule,
@@ -27,7 +31,9 @@ import {ENV} from '@app/env';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    LoginPage
+    LoginPage,
+    EventsPage,
+    EventDetailPage
   ],
   providers: [
     StatusBar,

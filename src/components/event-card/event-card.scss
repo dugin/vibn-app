@@ -1,0 +1,62 @@
+event-card {
+
+  .EventCard {
+    background-color: color($colors, primary);
+    padding-bottom: 10px;
+
+    .col {
+      padding-top: 0;
+    }
+
+    ion-icon {
+      margin-right: 3px;
+      color: rgba(0, 0, 0, .8);
+    }
+
+    span {
+      color: rgba(0, 0, 0, .8);
+    }
+
+    .info {
+      background-color: #fff;
+
+      &__place {
+        border-bottom: 1px solid lightgray;
+        padding-bottom: 0;
+        margin-bottom: 10px;
+
+        &__pin {
+          display: flex;
+          align-items: center;
+
+          ion-icon {
+            margin-right: 10px;
+          }
+        }
+
+        &__music {
+          text-align: right;
+        }
+
+        &__attending {
+
+          &--wrapper {
+            text-align: center;
+          }
+          &--count {
+            border-radius: 50%;
+            padding: 13px 0;
+            width: 39px;
+            margin-left: auto;
+            background-color: rgba(86, 29, 113, .6);
+            font-size: 10px;
+            color: #fff;
+          }
+
+        }
+      }
+    }
+
+  }
+
+}

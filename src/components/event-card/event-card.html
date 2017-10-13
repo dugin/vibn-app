@@ -1,0 +1,38 @@
+<!-- Generated template for the EventCardComponent component -->
+<div class="EventCard">
+
+  <event-cover-image [event]="event"></event-cover-image>
+
+  <ion-grid class="info">
+
+    <ion-row class="info__place">
+      <ion-col col-9 class="info__place__pin">
+        <ion-icon name="md-pin"></ion-icon>
+        {{event.place}}
+      </ion-col>
+      <ion-col col-3 class="info__place__attending--wrapper">
+        <div class="info__place__attending--count">+{{event.attendingCount}}</div>
+      </ion-col>
+
+    </ion-row>
+
+    <ion-row class="info__time">
+      <ion-col col-5>
+        <ion-icon name="md-time"></ion-icon>
+        {{event.startTime}}
+        <ion-icon style="margin-left: 5px" name="md-calendar"></ion-icon>
+        {{setWeekDate(event.startDate)}}
+      </ion-col>
+
+      <ion-col col-7 class="info__place__music">
+        <span *ngFor="let s of event.tags.musicStyle, let i = index">
+          {{s}}{{i !== event.tags.musicStyle.length - 1 ? ',' : ''}}
+        </span>
+      </ion-col>
+
+    </ion-row>
+
+  </ion-grid>
+
+
+</div>

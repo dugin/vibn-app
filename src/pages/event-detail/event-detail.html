@@ -1,0 +1,45 @@
+<!--
+  Generated template for the EventDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{event && event.title}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <!--[style.padding-top]="setPadding() +'px'">-->
+
+  <div *ngIf="event" class="scroll-content">
+
+
+    <event-card [event]="event"></event-card>
+
+    <section class="more-info">
+      <div class="more-info__title">
+        <ion-icon ios="ios-menu" md="md-menu"></ion-icon>
+        <p class="more-info__title--text">Descrição</p>
+      </div>
+
+      <div class="more-info__description">
+
+        {{event.description}}
+
+      </div>
+
+
+      <div class="want-it">
+        <button ion-button color="accent" round>Quero!</button>
+      </div>
+
+    </section>
+
+  </div>
+
+</ion-content>

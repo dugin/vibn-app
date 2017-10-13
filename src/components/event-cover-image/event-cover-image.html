@@ -1,0 +1,17 @@
+<!-- Generated template for the EventCoverImageComponent component -->
+<div class="cover" [style.background-image]="'url(' + event.img + ')'">
+  <div class="cover__layer">
+  </div>
+
+  <div class="cover__day">
+    {{setDate(event.startDate)}}
+  </div>
+
+  <div class="cover__info">
+    <h5 class="cover__info__title">{{event.title}}</h5>
+    <p class="cover__info__subtitle">{{event.subtitle}}</p>
+  </div>
+
+  <ion-badge class="cover__badge">{{event.tags.partyKind && event.tags.partyKind[0]}}</ion-badge>
+
+</div>
