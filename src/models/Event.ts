@@ -19,7 +19,8 @@ export class EventModel {
               public   state?: string,
               public   subtitle?: string,
               public   tags?: { locationRegion: string[], musicStyle: string[], partyKind: string[] },
-              public   title?: string) {
+              public   title?: string,
+              public   distance?: string) {
   }
 
 }

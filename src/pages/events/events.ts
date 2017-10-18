@@ -7,6 +7,9 @@ import {platform} from 'os';
 import {EventDetailPage} from '../event-detail/event-detail';
 
 import * as dateHandler from '../../utils/dateHandler';
+import {GeolocationProvider} from '../../providers/geolocation/geolocation';
+import 'rxjs/add/operator/mergeMap';
+import {toLatLng} from '../../utils/utils';
 
 /**
  * Generated class for the EventsPage page.
@@ -24,7 +27,7 @@ export class EventsPage {
   events: EventModel[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseProvider: FirebaseProvider,
-              public platform: Platform) {
+              public platform: Platform, private geolocationProvider: GeolocationProvider) {
   }
 
   ionViewDidLoad() {
@@ -34,17 +37,18 @@ export class EventsPage {
   }
 
   getEvents() {
+
     this.firebaseProvider.getAllEvents()
-      .subscribe((val: EventModel[]) => {
-        console.log(val);
-        this.events = dateHandler.sortByDate(val);
+      .map((events) => this.events = events)
+      .mergeMap(() => this.geolocationProvider.getUsersLocation())
+      .subscribe((userLocation) => {
+
+        this.events = this.geolocationProvider.setEventsDistance(
+          toLatLng(userLocation.coords.latitude, userLocation.coords.longitude),
+          this.events);
+
       });
   }
-
-  setPadding() {
-    return this.platform.is('android') ? 56 : 44;
-  }
-
 
   onEvent(event) {
     console.log(event);

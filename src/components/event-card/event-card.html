@@ -17,14 +17,17 @@
     </ion-row>
 
     <ion-row class="info__time">
-      <ion-col col-5>
-        <ion-icon name="md-time"></ion-icon>
-        {{event.startTime}}
-        <ion-icon style="margin-left: 5px" name="md-calendar"></ion-icon>
+      <ion-col col-8>
+        <ion-icon style="margin-left: 0" name="md-time"></ion-icon>
+        {{setTime(event.startDate)}}
+        <ion-icon  name="md-calendar"></ion-icon>
         {{setWeekDate(event.startDate)}}
+
+       <span *ngIf="event.distance"> <ion-icon name="md-walk"></ion-icon>
+          {{event.distance/1000}}km </span>
       </ion-col>
 
-      <ion-col col-7 class="info__place__music">
+      <ion-col col-4 class="info__place__music">
         <span *ngFor="let s of event.tags.musicStyle, let i = index">
           {{s}}{{i !== event.tags.musicStyle.length - 1 ? ',' : ''}}
         </span>

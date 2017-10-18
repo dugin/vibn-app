@@ -12,6 +12,9 @@ import {AngularFirestoreModule} from 'angularfire2/firestore';
 import {ENV} from '@app/env';
 import {EventsPage} from '../pages/events/events';
 import {EventDetailPage} from '../pages/event-detail/event-detail';
+import {GeolocationProvider} from '../providers/geolocation/geolocation';
+import {Geolocation} from '@ionic-native/geolocation';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +41,9 @@ import {EventDetailPage} from '../pages/event-detail/event-detail';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    Geolocation,
+    GeolocationProvider
   ]
 })
 export class AppModule {

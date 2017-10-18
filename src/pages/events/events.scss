@@ -1,5 +1,15 @@
 page-events {
 
+  .toolbar-title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img{
+      margin-right: 5px;
+    }
+  }
+
   .loading {
     height: 100%;
     width: 100%;

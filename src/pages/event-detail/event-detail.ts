@@ -28,8 +28,5 @@ export class EventDetailPage {
     console.log('ionViewDidLoad EventDetailPage');
   }
 
-  setPadding() {
-    return this.platform.is('android') ? 56 : 44;
-  }
 
 }

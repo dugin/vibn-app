@@ -6,6 +6,7 @@ event-card {
 
     .col {
       padding-top: 0;
+
     }
 
     ion-icon {
@@ -19,6 +20,12 @@ event-card {
 
     .info {
       background-color: #fff;
+
+      &__time{
+        ion-icon{
+          margin-left: 5px;
+        }
+      }
 
       &__place {
         border-bottom: 1px solid lightgray;

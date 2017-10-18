@@ -23,7 +23,11 @@ export class EventCardComponent {
   }
 
 
+  setTime(day){
+    return moment(day).format('HH:mm');
+
+  }
   setWeekDate(day) {
-    return moment(day, 'DD/MM/YYYY').format('ddd');
+    return moment(day).format('ddd');
   }
 }

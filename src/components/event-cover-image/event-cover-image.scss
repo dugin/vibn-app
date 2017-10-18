@@ -7,9 +7,17 @@ event-cover-image {
     height: 200px;
     position: relative;
 
+    &__loader-img{
+      position: absolute;
+      top:35%;
+      left:50%;
+      transform: translate(-50%, -50%);
+
+    }
+
     &__layer {
       position: absolute;
-      height: 50px;
+      height: 65px;
       width: 100%;
       bottom: 0;
       background-color: rgba(0, 0, 0, .7);
@@ -35,6 +43,7 @@ event-cover-image {
       left: 10px;
       color: #fff;
       z-index: 2;
+      width: 80%;
 
       &__title {
         font-size: 16px;
