@@ -10,6 +10,10 @@
     {{setDate(event.startDate)}}
   </div>
 
+  <div *ngIf="event.discount" class="cover__discount">
+    {{event.discount}}%<br>OFF
+  </div>
+
   <div class="cover__info">
     <h5 class="cover__info__title">{{event.title}}</h5>
     <p class="cover__info__subtitle">{{event.subtitle}}</p>

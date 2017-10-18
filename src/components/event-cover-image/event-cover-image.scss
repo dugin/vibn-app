@@ -17,10 +17,10 @@ event-cover-image {
 
     &__layer {
       position: absolute;
-      height: 65px;
+      height: 76px;
       width: 100%;
       bottom: 0;
-      background-color: rgba(0, 0, 0, .7);
+      background: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .5), rgba(0, 0, 0, .7),rgba(0, 0, 0, .7)) ;
       z-index: 1;
     }
 
@@ -37,13 +37,30 @@ event-cover-image {
       font-weight: bold;
     }
 
+    &__discount{
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(86, 29, 113, .9);
+      z-index: 2;
+      border-radius: 50%;
+      height: 45px;
+      width: 45px;
+      font-size: 14px;
+      color: #fff;
+      font-weight: 400;
+    }
+
     &__info {
       position: absolute;
-      bottom: 10px;
+      bottom: 5px;
       left: 10px;
       color: #fff;
       z-index: 2;
-      width: 80%;
+      width: 76%;
 
       &__title {
         font-size: 16px;
