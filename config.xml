@@ -41,7 +41,7 @@
         <variable name="APP_NAME" value="Vibn" />
     </plugin>
     <plugin name="cordova-plugin-geolocation" spec="~2.4.3">
-        <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="Para encontrarmos os melhores eventos próximso a você" />
+        <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="Para encontrarmos os melhores eventos próximos a você" />
     </plugin>
     <engine name="ios" spec="~4.3.1" />
 </widget>
