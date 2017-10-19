@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {NavController, NavParams} from 'ionic-angular';
-import {EventsPage} from '../events/events';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {EVENTS_PAGE} from '../pages.constants';
 
 /**
  * Generated class for the LoginPage page.
@@ -8,7 +8,7 @@ import {EventsPage} from '../events/events';
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-
+@IonicPage()
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
@@ -24,7 +24,7 @@ export class LoginPage {
   }
 
   onSkip() {
-    this.navCtrl.setRoot(EventsPage, {}, {animate: true, direction: 'forward'});
+    this.navCtrl.setRoot(EVENTS_PAGE, {}, {animate: true, direction: 'forward'});
   }
 
 }

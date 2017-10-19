@@ -9,6 +9,7 @@ import {EventModel} from '../../models/Event';
  * on Ionic pages and navigation.
  */
 
+@IonicPage()
 @Component({
   selector: 'page-event-detail',
   templateUrl: 'event-detail.html',
@@ -23,7 +24,7 @@ export class EventDetailPage {
 
   ionViewDidLoad() {
 
-   console.log(this.navParams.get('event'))
+    console.log(this.navParams.get('event'))
     this.event = this.navParams.get('event');
     console.log('ionViewDidLoad EventDetailPage');
   }

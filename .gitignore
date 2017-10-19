@@ -12,6 +12,8 @@ log.txt
 .vscode/
 npm-debug.log*
 
+.sourcemaps
+
 # Environment Variables
 **/environment.*
 !**/environment.model.ts

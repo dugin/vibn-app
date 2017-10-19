@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {Platform} from 'ionic-angular';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
-import {LoginPage} from '../pages/login/login';
+import {LOGIN_PAGE} from '../pages/pages.constants';
 
 @Component({
   template: `
@@ -11,7 +11,7 @@ import {LoginPage} from '../pages/login/login';
 })
 export class MyApp {
 
-  rootPage = LoginPage;
+  rootPage: string = LOGIN_PAGE;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     // used for an example of ngFor and navigation

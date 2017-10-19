@@ -11,18 +11,18 @@ event-card {
 
     ion-icon {
       margin-right: 3px;
-      color: rgba(0, 0, 0, .8);
+      color: color($colors, darker-text);
     }
 
     span {
-      color: rgba(0, 0, 0, .8);
+      color: color($colors, darker-text);
     }
 
     .info {
       background-color: #fff;
 
-      &__time{
-        ion-icon{
+      &__time {
+        ion-icon {
           margin-left: 5px;
         }
       }
@@ -43,6 +43,9 @@ event-card {
 
         &__music {
           text-align: right;
+          span {
+            color: color($colors, text);
+          }
         }
 
         &__attending {
@@ -55,7 +58,7 @@ event-card {
             padding: 13px 0;
             width: 39px;
             margin-left: auto;
-            background-color:rgba(0, 0, 0, .8);
+            background-color: color($colors, darker-text);
             font-size: 10px;
             color: #fff;
           }

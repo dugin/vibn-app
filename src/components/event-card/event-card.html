@@ -17,7 +17,7 @@
     </ion-row>
 
     <ion-row class="info__time">
-      <ion-col col-8>
+      <ion-col col-8 col-md-6 col-lg-5>
         <ion-icon style="margin-left: 0" name="md-time"></ion-icon>
         {{setTime(event.startDate)}}
         <ion-icon  name="md-calendar"></ion-icon>
@@ -27,7 +27,7 @@
           {{event.distance/1000}}km </span>
       </ion-col>
 
-      <ion-col col-4 class="info__place__music">
+      <ion-col col-4 col-md-6 col-lg-7 class="info__place__music">
         <span *ngFor="let s of event.tags.musicStyle, let i = index">
           {{s}}{{i !== event.tags.musicStyle.length - 1 ? ',' : ''}}
         </span>
