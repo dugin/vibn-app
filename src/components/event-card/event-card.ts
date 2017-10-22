@@ -22,7 +22,6 @@ export class EventCardComponent {
 
   }
 
-
   setTime(day){
     return moment(day).format('HH:mm');
 

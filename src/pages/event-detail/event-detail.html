@@ -7,6 +7,7 @@
 <ion-header>
 
   <ion-navbar>
+
     <ion-title>{{event && event.title}}</ion-title>
   </ion-navbar>
 
@@ -16,8 +17,8 @@
 <ion-content>
   <!--[style.padding-top]="setPadding() +'px'">-->
 
-  <ion-fab right bottom>
-    <button color="accent" ion-fab>Quero!</button>
+  <ion-fab  bottom>
+    <button color="accent" (click)="onWantIt()" ion-fab>Quero!</button>
   </ion-fab>
 
   <div *ngIf="event" class="scroll-content">

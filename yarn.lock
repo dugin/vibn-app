@@ -139,17 +139,25 @@
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/@firebase/webchannel-wrapper/-/webchannel-wrapper-0.2.3.tgz#e94f7e772f40e48a2dc52e57d1df38b28bf98e39"
 
+"@ionic-native/clipboard@^4.3.2":
+  version "4.3.2"
+  resolved "https://registry.yarnpkg.com/@ionic-native/clipboard/-/clipboard-4.3.2.tgz#903ff5fabaa469fb6edbc3e12966796b2106fa5a"
+
 "@ionic-native/core@3.12.1":
   version "3.12.1"
   resolved "https://registry.yarnpkg.com/@ionic-native/core/-/core-3.12.1.tgz#5b7c7a4f5adfc8da0b9197e1843e5893acf66021"
 
-"@ionic-native/facebook@^4.3.1":
-  version "4.3.1"
-  resolved "https://registry.yarnpkg.com/@ionic-native/facebook/-/facebook-4.3.1.tgz#529c17475670189855e5ee0985e6ff5ce4f2fbe1"
+"@ionic-native/facebook@^4.3.2":
+  version "4.3.2"
+  resolved "https://registry.yarnpkg.com/@ionic-native/facebook/-/facebook-4.3.2.tgz#36cdef8c343dea3782c4d550eb2f2abd8fb7ede8"
 
 "@ionic-native/geolocation@^4.3.1":
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/@ionic-native/geolocation/-/geolocation-4.3.1.tgz#7b722a1a8c5fc518c4b61b6729c3b3a2b0c2d30d"
+
+"@ionic-native/in-app-browser@^4.3.2":
+  version "4.3.2"
+  resolved "https://registry.yarnpkg.com/@ionic-native/in-app-browser/-/in-app-browser-4.3.2.tgz#4e325ba2f5723c8bccb8e75cbfb0687ab5f74fdc"
 
 "@ionic-native/splash-screen@3.12.1":
   version "3.12.1"

@@ -20,7 +20,8 @@ export class EventModel {
               public   subtitle?: string,
               public   tags?: { locationRegion: string[], musicStyle: string[], partyKind: string[] },
               public   title?: string,
-              public   distance?: string) {
+              public   distance?: string,
+              public   directLink?: boolean) {
   }
 
 }

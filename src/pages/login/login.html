@@ -17,7 +17,12 @@
   <button class="skip--btn" color="light" (click)="onSkip()" ion-button clear>pular</button>
 
   <div class="facebook--btn">
-    <facebook-login></facebook-login>
+    <facebook-login (onLoading)="onLoading()" (onLogin)="onLogin()"></facebook-login>
+  </div>
+
+  <div *ngIf="loading" class="loader">
+    <ion-spinner color="primary" name="crescent"></ion-spinner>
+      Fazendo Login...
   </div>
 
 </ion-content>

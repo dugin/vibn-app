@@ -15,12 +15,23 @@ import {EVENTS_PAGE} from '../pages.constants';
 })
 export class LoginPage {
 
+  loading = false;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
 
+  }
+
+  onLoading() {
+    this.loading = true;
+  }
+
+  onLogin(res) {
+
+    this.onSkip();
   }
 
   onSkip() {

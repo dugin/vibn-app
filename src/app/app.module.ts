@@ -11,24 +11,25 @@ import {ENV} from '@app/env';
 
 @NgModule({
   declarations: [
-    MyApp
+    MyApp,
+
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(ENV.firebasConfig),
+    AngularFireModule.initializeApp(ENV.firebaseConfig),
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp
+    MyApp,
+
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
-
   ]
 })
 export class AppModule {

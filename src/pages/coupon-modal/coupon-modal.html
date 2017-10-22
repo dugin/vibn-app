@@ -1,0 +1,39 @@
+<!--
+  Generated template for the CouponModalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+
+<div class="layer">
+
+</div>
+
+<div class="coupon-content">
+
+  <div class="coupon-content__header">
+    Cupom
+    <button color="dark" ion-button icon-only clear (click)="onClose()">
+      <ion-icon name="close"></ion-icon>
+
+    </button>
+  </div>
+
+  <button (click)="onCopy()"  class="coupon-content__main" ion-button color="accent" outline>  {{event?.coupon}}</button>
+
+
+  <div class="coupon-content__footer">
+    <p class="coupon-content__footer__desc">
+      Acesse o site abaixo e insira o código do cupom na hora da compra para ganhar o disconto
+    </p>
+    <a class="coupon-content__footer__link" (click)="onLink()">
+      {{event?.buyLink}}
+    </a>
+  </div>
+
+
+</div>
+
+<ion-content>
+</ion-content>

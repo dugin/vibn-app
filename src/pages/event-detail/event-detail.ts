@@ -1,6 +1,8 @@
-import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams, Platform} from 'ionic-angular';
+import {Component, NgZone} from '@angular/core';
+import {IonicPage, ModalController, NavController, NavParams, Platform} from 'ionic-angular';
 import {EventModel} from '../../models/Event';
+import {InAppBrowser} from '@ionic-native/in-app-browser';
+import {COUPON_MODAL_PAGE} from '../pages.constants';
 
 /**
  * Generated class for the EventDetailPage page.
@@ -19,7 +21,9 @@ export class EventDetailPage {
   event: EventModel;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-              public platform: Platform) {
+              public platform: Platform, private iab: InAppBrowser,
+              public modalCtrl: ModalController,
+              private zone: NgZone) {
   }
 
   ionViewDidLoad() {
@@ -27,6 +31,21 @@ export class EventDetailPage {
     console.log(this.navParams.get('event'))
     this.event = this.navParams.get('event');
     console.log('ionViewDidLoad EventDetailPage');
+
+
+  }
+
+  onWantIt() {
+
+    if (this.event.directLink)
+      this.iab.create(this.event.buyLink);
+
+    else {
+        const couponModal = this.modalCtrl.create(COUPON_MODAL_PAGE, {event: this.event});
+        couponModal.present();
+
+    }
+
   }
 
 

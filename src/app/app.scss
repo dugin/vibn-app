@@ -24,6 +24,14 @@ body{
   background: linear-gradient(rgba(86, 29, 113, 1), rgba(86, 29, 113, .9), rgba(86, 29, 113, .8));
 }
 
+.back-button-icon:before{
+  content: "\f282";
+}
+
+
+.back-button-text{
+   display: none;
+}
 .toolbar-title-ios, .toolbar-title-md {
   color: #fff;
 }

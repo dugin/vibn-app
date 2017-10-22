@@ -1,10 +1,15 @@
 <!-- Generated template for the EventCoverImageComponent component -->
-<div class="cover" [style.background-image]="'url(' + event.img + ')'">
 
-  <ion-spinner *ngIf="!event.distance" class="cover__loader-img" color="light" name="crescent"></ion-spinner>
+<div class="cover" >
+
+  <img class="cover__img" height="200" (error)="event.img = './../assets/images/no-image.jpeg'" (load)="imgLoaded = true" src="{{event?.img}}"/>
+
+  <ion-spinner *ngIf="!imgLoaded" class="cover__loader-img" color="light" name="crescent"></ion-spinner>
 
   <div class="cover__layer">
   </div>
+
+
 
   <div class="cover__day">
     {{setDate(event.startDate)}}

@@ -1,11 +1,16 @@
 event-cover-image {
 
+  .img-loaded + ion-spinner {
+    display:none;
+  }
+
   .cover {
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
     height: 200px;
     position: relative;
+
+    &__img{
+      width: 100%;
+    }
 
     &__loader-img{
       position: absolute;
@@ -78,6 +83,7 @@ event-cover-image {
       bottom: 10px;
       right: 10px;
       padding: 5px 10px;
+      border-radius: 50px;
       z-index: 2;
       background-color: lighten(color($colors, primary), 15);
     }

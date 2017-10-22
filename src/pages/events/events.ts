@@ -6,6 +6,7 @@ import {GeolocationProvider} from '../../providers/geolocation/geolocation';
 import 'rxjs/add/operator/mergeMap';
 import {toLatLng} from '../../utils/utils';
 import {EVENT_DETAIL_PAGE} from '../pages.constants';
+import {Observable} from 'rxjs/Observable';
 
 /**
  * Generated class for the EventsPage page.
@@ -36,7 +37,7 @@ export class EventsPage {
   getEvents() {
 
     this.firebaseProvider.getAllEvents()
-      .map((events) => this.events = events)
+      .map((events) =>  this.events = events)
       .mergeMap(() => this.geolocationProvider.getUsersLocation())
       .subscribe((userLocation) => {
 
@@ -45,7 +46,6 @@ export class EventsPage {
           toLatLng(userLocation.coords.latitude, userLocation.coords.longitude),
           this.events
         );
-
       });
   }
 

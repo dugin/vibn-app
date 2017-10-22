@@ -14,18 +14,21 @@ import {Constants} from '../../utils/constants';
 @Injectable()
 export class FirebaseProvider {
 
-  events = 'events';
-
   constructor(public af: AngularFirestore, public auth: AngularFireAuth) {
-
     console.log('Hello FirebaseProvider Provider');
-
   }
 
-
   getAllEvents() {
-    return this.af.collection(Constants.FIREBASE_COLLECTION_EVENTS, ref => ref.where('startDate', '>=', moment().toDate())
-      .orderBy('startDate', 'asc')).valueChanges();
+    return this.af.collection(Constants.FIREBASE_COLLECTION_EVENTS,
+      ref => ref.where('endDate', '>=', moment().toDate())
+        .orderBy('endDate', 'asc')).valueChanges();
+  }
+
+  postNewUser(id, user) {
+    return this.af.collection(Constants.FIREBASE_COLLECTION_USERS)
+      .doc(id)
+      .ref
+      .set({...user, createdAt: moment().toDate()}, {merge: true})
   }
 
 }

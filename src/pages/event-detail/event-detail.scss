@@ -1,5 +1,15 @@
 page-event-detail {
 
+  ion-fab {
+    left: 50%;
+    transform: translateX(-50%);
+    .fab {
+      width: 93vw;
+      height: 35px;
+      border-radius: 50px;
+    }
+  }
+
   .EventCard {
     padding-bottom: 0;
   }
@@ -31,4 +41,5 @@ page-event-detail {
       font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
     }
   }
+
 }

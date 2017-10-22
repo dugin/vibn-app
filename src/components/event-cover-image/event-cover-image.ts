@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnChanges} from '@angular/core';
 import {EventModel} from '../../models/Event';
 import * as dateHandler from '../../utils/dateHandler';
 
@@ -16,10 +16,12 @@ export class EventCoverImageComponent {
 
   @Input() event: EventModel;
 
+  imgLoaded = false;
+
   constructor() {
     console.log('Hello EventCoverImageComponent Component');
-
   }
+
 
   setDate(day) {
     return dateHandler.setEventDate(day)
