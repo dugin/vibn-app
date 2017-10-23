@@ -44,7 +44,7 @@ export class FacebookLoginComponent {
         .then((res: any) => {
           console.log(res);
 
-          const facebookCredential = firebase.auth.FacebookAuthProvider.credential(res.authResponse.accessToken)
+          const facebookCredential = firebase.auth.FacebookAuthProvider.credential(res.authResponse.accessToken);
 
           return firebase.auth().signInWithCredential(facebookCredential);
         })
@@ -61,7 +61,7 @@ export class FacebookLoginComponent {
           this.onLogin.emit(res);
 
           console.log('signInWithFacebook Complete!');
-          this.didClick = false
+          this.didClick = false;
         })
         .catch(err => console.error(err))
     }

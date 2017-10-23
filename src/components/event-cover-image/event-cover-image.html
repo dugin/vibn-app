@@ -2,7 +2,7 @@
 
 <div class="cover" >
 
-  <img class="cover__img" height="200" (error)="event.img = './../assets/images/no-image.jpeg'" (load)="imgLoaded = true" src="{{event?.img}}"/>
+  <img class="cover__img" height="200" (error)="event.img = 'assets/images/no-image.jpeg'" (load)="imgLoaded = true" src="{{event?.img}}"/>
 
   <ion-spinner *ngIf="!imgLoaded" class="cover__loader-img" color="light" name="crescent"></ion-spinner>
 

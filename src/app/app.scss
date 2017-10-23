@@ -14,29 +14,23 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
-
-body{
+body {
   font-family: "Trebuchet MS", "Helvetica Neue", sans-serif;
 }
 
 .toolbar-background-ios, .toolbar-background-md {
-
-  background: linear-gradient(rgba(86, 29, 113, 1), rgba(86, 29, 113, .9), rgba(86, 29, 113, .8));
+  background-color: color($colors, primary);
 }
 
-.back-button-icon:before{
+.back-button-icon:before {
   content: "\f282";
 }
 
-
-.back-button-text{
-   display: none;
-}
-.toolbar-title-ios, .toolbar-title-md {
-  color: #fff;
+.back-button-text {
+  display: none;
 }
 
-.bar-button-default-ios, .bar-button-default-md {
+.toolbar-title-ios, .toolbar-title-md, .bar-button-default-ios, .bar-button-default-md {
   color: #fff;
 }
 

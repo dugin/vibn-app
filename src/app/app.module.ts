@@ -12,7 +12,6 @@ import {ENV} from '@app/env';
 @NgModule({
   declarations: [
     MyApp,
-
   ],
   imports: [
     BrowserModule,
@@ -24,7 +23,6 @@ import {ENV} from '@app/env';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-
   ],
   providers: [
     StatusBar,

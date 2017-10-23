@@ -91,9 +91,6 @@
     <plugin name="cordova-plugin-statusbar" spec="2.2.1" />
     <plugin name="cordova-plugin-device" spec="1.1.4" />
     <plugin name="cordova-plugin-splashscreen" spec="~4.0.1" />
-    <plugin name="cordova-plugin-geolocation" spec="~2.4.3">
-        <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="Para encontrarmos os melhores eventos próximos a você" />
-    </plugin>
     <allow-navigation href="http://192.168.1.104:8100" />
     <plugin name="cordova-plugin-facebook4" spec="https://github.com/jeduan/cordova-plugin-facebook4.git">
         <variable name="APP_ID" value="876019839240922" />
@@ -106,4 +103,7 @@
     <preference name="SplashScreenDelay" value="3000" />
     <plugin name="cordova-plugin-inappbrowser" spec="~1.7.1" />
     <plugin name="cordova-clipboard" spec="~1.1.0" />
+    <plugin name="cordova-plugin-geolocation" spec="~2.4.3">
+        <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="Para encontrarmos os melhores eventos próximos a você" />
+    </plugin>
 </widget>

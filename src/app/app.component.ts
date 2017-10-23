@@ -8,7 +8,7 @@ import {AngularFireAuth} from 'angularfire2/auth';
 @Component({
   template: `
     <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>`,
-  
+
 
 })
 export class MyApp {
@@ -33,7 +33,9 @@ export class MyApp {
 
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      this.statusBar.styleDefault();
+      this.statusBar.overlaysWebView(false);
+
+      this.statusBar.backgroundColorByHexString('#561d71');
     });
   }
 
