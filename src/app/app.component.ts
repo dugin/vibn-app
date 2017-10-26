@@ -7,7 +7,7 @@ import {AngularFireAuth} from 'angularfire2/auth';
 
 @Component({
   template: `
-    <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>`,
+    <ion-nav [root]="rootPage" #content swipeBackEnabled="true"></ion-nav>`,
 
 
 })

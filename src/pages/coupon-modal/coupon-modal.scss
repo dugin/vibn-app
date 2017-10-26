@@ -9,12 +9,15 @@ page-coupon-modal {
     height: 100%;
     width: 100%;
     bottom: 0;
-    background: rgba(0, 0, 0, .7);
+    background: rgba(255, 255, 255, .8);
     z-index: 1;
   }
 
   .coupon-content {
-    padding: 20px;
+
+    background: url('../assets/images/ticket.png') no-repeat center center;
+    background-size: cover;
+    padding: 30px 33% 40px 33% ;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -24,27 +27,64 @@ page-coupon-modal {
     transform: translate(-50%, -50%);
     position: relative;
     z-index: 2;
-    background-color: #fff;
-    box-shadow: 0 15px 32px 0 rgba(0, 0, 0, 0.15);
-    width: 90%;
-    height: 50%;
+    //box-shadow: 0 15px 32px 0 rgba(0, 0, 0, 0.15);
+    width: 120%;
+    height: 60%;
 
     &__header {
       font-size: 20px;
-      margin-top: -10px;
+      margin-top: 0;
+      padding-bottom: 15px;
+      //  border-bottom: 1px solid rgba(0, 0, 0, .3);
+      position: relative;
+      color: #fff;
+      z-index: 3;
+
       button {
         position: absolute;
-        right: 0;
-        top: 0;
+        right: -20px;
+        top: -40px;
+        font-size: 20px;
+        color: #fff;
       }
     }
 
-    &__footer{
+    &__main {
+      padding: 40px 10px;
+      font-size: 18px;
+      margin: 20px 0;
+      position: relative;
+      z-index: 3;
+    }
 
-      &__desc{
+    &__footer {
+      //  border-top: 1px solid rgba(0, 0, 0, .1);
+      position: relative;
+      z-index: 3;
+      color: #fff;
+      margin: 0 ;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+
+      &__desc {
+        margin: 0;
         font-size: 12px;
-        margin-bottom: 20px;
+
       }
+
+      &__link {
+        color: color($colors, primary);
+        font-weight: bold;
+        text-decoration: underline;
+        font-size: 16px;
+
+        @media (max-width: 320px) {
+          font-size: 14px;
+        }
+      }
+
     }
   }
 

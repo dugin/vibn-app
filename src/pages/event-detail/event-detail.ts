@@ -37,7 +37,9 @@ export class EventDetailPage {
 
   onWantIt() {
 
-    if (this.event.directLink)
+    console.log(this.event.coupon)
+
+    if (this.event.directLink || !this.event.coupon)
       this.iab.create(this.event.buyLink);
 
     else {
