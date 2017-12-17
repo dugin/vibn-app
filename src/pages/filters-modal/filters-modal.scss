@@ -1,0 +1,41 @@
+page-filters-modal {
+
+  .item-md, .item-ios {
+    padding: 20px 0;
+  }
+
+  .list-md .item-block .item-inner, .list-ios .item-block .item-inner {
+    border-bottom: 1px solid #dedede !important;
+  }
+
+  .list-ios > .item-block:first-child {
+    border-top: none !important;
+  }
+  .list-ios > .item-block:last-child, .list-ios > .item-wrapper:last-child .item-block {
+    border-bottom: none;
+  }
+  .label-ios{
+    color: gray !important;
+  }
+
+  ion-select {
+    max-width: 70%;
+  }
+
+  .select-text {
+    white-space: inherit;
+  }
+  .btn-wrapper {
+    position: absolute;
+    bottom: 0;
+    z-index: 1;
+    width: 100%;
+    margin-left: -16px;
+    display: flex;
+    box-shadow: 5px 5px 25px 0 rgba(46, 61, 73, .2);
+
+    button {
+      flex-grow: 1;
+    }
+  }
+}

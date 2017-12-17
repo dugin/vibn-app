@@ -28,7 +28,7 @@ export class MyApp {
 
           this.rootPage = auth ? EVENTS_PAGE : LOGIN_PAGE;
 
-          this.splashScreen.hide()
+          this.hideSplashScreen();
         });
 
       // Okay, so the platform is ready and our plugins are available.
@@ -37,6 +37,12 @@ export class MyApp {
 
       this.statusBar.backgroundColorByHexString('#561d71');
     });
+  }
+
+  private hideSplashScreen() {
+    setTimeout(() => {
+      this.splashScreen.hide();
+    }, 800)
   }
 
 }

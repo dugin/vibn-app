@@ -20,8 +20,10 @@ export class FirebaseProvider {
 
   getAllEvents() {
     return this.af.collection(Constants.FIREBASE_COLLECTION_EVENTS,
-      ref => ref.where('endDate', '>=', moment().toDate())
-        .orderBy('endDate', 'asc')).valueChanges();
+      ref => ref
+        .where('endDate', '>=', moment().toDate())
+        .orderBy('endDate', 'asc'))
+      .valueChanges();
   }
 
   postNewUser(id, user) {
@@ -30,5 +32,12 @@ export class FirebaseProvider {
       .ref
       .set({...user, createdAt: moment().toDate()}, {merge: true})
   }
+
+  getTags(id) {
+    return this.af.collection(Constants.FIREBASE_COLLECTION_TAGS)
+      .doc(id)
+      .valueChanges()
+  }
+
 
 }

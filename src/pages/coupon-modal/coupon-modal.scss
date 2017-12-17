@@ -15,9 +15,13 @@ page-coupon-modal {
 
   .coupon-content {
 
-    background: url('../assets/images/ticket.png') no-repeat center center;
+    p {
+      color: #fff;
+    }
+
+    background: url('../assets/images/ticket.svg') no-repeat center center;
     background-size: cover;
-    padding: 30px 33% 40px 33% ;
+    padding: 80px 10% 20px 10%;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -28,31 +32,31 @@ page-coupon-modal {
     position: relative;
     z-index: 2;
     //box-shadow: 0 15px 32px 0 rgba(0, 0, 0, 0.15);
-    width: 120%;
-    height: 60%;
+    width: 250px;
+    height: 500px;
 
     &__header {
-      font-size: 20px;
+      font-size: 24px;
       margin-top: 0;
-      padding-bottom: 15px;
+      padding-bottom: 80px;
       //  border-bottom: 1px solid rgba(0, 0, 0, .3);
       position: relative;
-      color: #fff;
       z-index: 3;
+      color: #fff;
 
       button {
         position: absolute;
-        right: -20px;
-        top: -40px;
+        right: -30px;
+        top: -60px;
         font-size: 20px;
         color: #fff;
       }
     }
 
     &__main {
-      padding: 40px 10px;
+      padding: 30px 10px;
       font-size: 18px;
-      margin: 20px 0;
+      margin: 25px 0;
       position: relative;
       z-index: 3;
     }
@@ -61,8 +65,7 @@ page-coupon-modal {
       //  border-top: 1px solid rgba(0, 0, 0, .1);
       position: relative;
       z-index: 3;
-      color: #fff;
-      margin: 0 ;
+      margin: 0;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -75,14 +78,13 @@ page-coupon-modal {
       }
 
       &__link {
-        color: color($colors, primary);
+        background-color: color($colors, primary);
         font-weight: bold;
-        text-decoration: underline;
-        font-size: 16px;
-
-        @media (max-width: 320px) {
-          font-size: 14px;
-        }
+        font-size: 14px;
+        color: #fff;
+        border-radius: 5px;
+        padding: 10px 5px;
+        border: 1px solid #fff;
       }
 
     }

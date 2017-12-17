@@ -19,7 +19,6 @@ export class EventCoverImageComponent {
   imgLoaded = false;
 
   constructor() {
-    console.log('Hello EventCoverImageComponent Component');
   }
 
 

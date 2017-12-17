@@ -1,12 +1,13 @@
 import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams, Platform} from 'ionic-angular';
+import {IonicPage, ModalController, NavController, NavParams, Platform} from 'ionic-angular';
 import {FirebaseProvider} from '../../providers/firebase/firebase';
 import {EventModel} from '../../models/Event';
 import {GeolocationProvider} from '../../providers/geolocation/geolocation';
 import 'rxjs/add/operator/mergeMap';
 import {toLatLng} from '../../utils/utils';
-import {EVENT_DETAIL_PAGE} from '../pages.constants';
-import {Observable} from 'rxjs/Observable';
+import {EVENT_DETAIL_PAGE, FILTERS_MODAL_PAGE} from '../pages.constants';
+import isEmpty from 'lodash/isEmpty'
+import {FilterProvider} from '../../providers/filter/filter';
 
 /**
  * Generated class for the EventsPage page.
@@ -24,8 +25,14 @@ export class EventsPage {
 
   events: EventModel[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseProvider: FirebaseProvider,
-              public platform: Platform, private geolocationProvider: GeolocationProvider) {
+
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public firebaseProvider: FirebaseProvider,
+              public platform: Platform,
+              public geolocationProvider: GeolocationProvider,
+              public modalCtrl: ModalController,
+              public filterProvider: FilterProvider) {
   }
 
   ionViewDidLoad() {
@@ -37,15 +44,16 @@ export class EventsPage {
   getEvents() {
 
     this.firebaseProvider.getAllEvents()
-      .map((events) =>  this.events = events)
+      .map((events) => this.events = this.filterProvider.events = events)
       .mergeMap(() => this.geolocationProvider.getUsersLocation())
       .subscribe((userLocation) => {
 
-        this.events = this.geolocationProvider.setEventsDistance
+        this.events = this.filterProvider.events = this.geolocationProvider.setEventsDistance
         (
           toLatLng(userLocation.coords.latitude, userLocation.coords.longitude),
           this.events
         );
+
       });
   }
 
@@ -53,6 +61,39 @@ export class EventsPage {
     console.log(event);
 
     this.navCtrl.push(EVENT_DETAIL_PAGE, {event});
+  }
+
+  onFilter() {
+    const filterModal = this.modalCtrl.create(FILTERS_MODAL_PAGE);
+    filterModal.present();
+
+    filterModal.onDidDismiss(data => {
+
+      console.log(data);
+
+      if (!isEmpty(data)) {
+        let shouldShow = true;
+
+        this.events = this.filterProvider.events.filter(e => {
+
+          for (const key of Object.keys(e.tags)) {
+            let tags = data[key];
+
+            shouldShow = !tags || e.tags[key].some(t => tags.includes(t));
+
+            if (!shouldShow)
+              break;
+          }
+
+          return shouldShow;
+        })
+      }
+      else if (typeof data !== 'undefined') {
+        this.events = this.filterProvider.events;
+      }
+
+
+    })
   }
 
 }

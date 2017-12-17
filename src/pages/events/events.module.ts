@@ -4,6 +4,7 @@ import {EventsPage} from './events';
 import {GeolocationProvider} from '../../providers/geolocation/geolocation';
 import {Geolocation} from '@ionic-native/geolocation';
 import {ComponentsModule} from '../../components/components.module';
+import {FilterProvider} from '../../providers/filter/filter';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import {ComponentsModule} from '../../components/components.module';
   ],
   providers: [
     Geolocation,
-    GeolocationProvider
+    GeolocationProvider,
+    FilterProvider
   ]
 })
 export class EventsPageModule {}

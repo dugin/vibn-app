@@ -10,8 +10,9 @@ export const setMomentObj = (startDate: string, startTime: string): moment.Momen
 };
 
 export const setEventDate = (day) => {
-  const d = moment(day, 'DD/MM/YYYY');
-  const diff = Math.ceil(d.diff(moment(), 'd', true));
+  const d = moment(day).hours(0);
+
+  const diff = Math.round(d.diff(moment().hours(0), 'd', true));
 
   switch (diff) {
     case 0 :

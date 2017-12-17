@@ -22,33 +22,21 @@ export class EventDetailPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public platform: Platform, private iab: InAppBrowser,
-              public modalCtrl: ModalController,
-              private zone: NgZone) {
+              public modalCtrl: ModalController) {
   }
 
   ionViewDidLoad() {
-
-    console.log(this.navParams.get('event'))
     this.event = this.navParams.get('event');
-    console.log('ionViewDidLoad EventDetailPage');
-
-
   }
 
   onWantIt() {
-
-    console.log(this.event.coupon)
-
     if (this.event.directLink || !this.event.coupon)
       this.iab.create(this.event.buyLink);
 
     else {
         const couponModal = this.modalCtrl.create(COUPON_MODAL_PAGE, {event: this.event});
         couponModal.present();
-
     }
-
   }
-
 
 }

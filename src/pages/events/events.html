@@ -7,7 +7,16 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title><img src="assets/icon/logo-i.png" height="25" alt=""> <span class="logo-name">Vibn</span></ion-title>
+
+    <ion-title>
+      <img src="assets/icon/logo-i.png" height="25" alt=""> <span class="logo-name">Vibn</span>
+    </ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only color="light" (click)="onFilter()" >
+        <ion-icon name="ios-funnel" color="light"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -15,11 +24,16 @@
 
 <ion-content>
 
-  <div class="scroll-content" >
+  <div class="scroll-content">
 
     <div class="loading" *ngIf="!events; else loaded">
       <ion-spinner color="primary" name="crescent"></ion-spinner>
       Carregando Eventos...
+    </div>
+
+    <div class="not-found" *ngIf="events && events.length === 0">
+
+     Nenhum evento encontrado com o filtro...
     </div>
 
     <ng-template #loaded>

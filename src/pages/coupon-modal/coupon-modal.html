@@ -19,6 +19,9 @@
     </button>
   </div>
 
+  <p class="coupon-content__main-text">
+    Clique no botão abaixo para copiar o código </p>
+
   <button (click)="onCopy()" class="coupon-content__main" ion-button color="light" outline>
     {{event?.coupon}}
   </button>
@@ -26,10 +29,10 @@
 
   <div class="coupon-content__footer">
     <p class="coupon-content__footer__desc">
-      Acesse o site abaixo e insira o código do cupom na hora da compra para ganhar o disconto
+      Clique no botão abaixo para acessar o site e insira o código do cupom na hora da compra para ganhar o disconto
     </p>
     <a class="coupon-content__footer__link" (click)="onLink()">
-     Ir para o site de compra
+      Ir para o site de compra
     </a>
   </div>
 

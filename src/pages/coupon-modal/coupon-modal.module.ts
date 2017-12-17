@@ -6,11 +6,10 @@ import {InAppBrowser} from '@ionic-native/in-app-browser';
 
 @NgModule({
   declarations: [
-    CouponModalPage,
+    CouponModalPage
   ],
   imports: [
-    IonicPageModule.forChild(CouponModalPage),
-
+    IonicPageModule.forChild(CouponModalPage)
   ],
   providers: [
     Clipboard,

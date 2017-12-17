@@ -18,7 +18,6 @@ export class EventCardComponent {
   @Input() event: EventModel;
 
   constructor() {
-    console.log('Hello EventCardComponent Component');
 
   }
 
