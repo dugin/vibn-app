@@ -1,7 +1,12 @@
-import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
-import {FirebaseProvider} from '../../providers/firebase/firebase';
-import {FilterProvider} from '../../providers/filter/filter';
+import { Component } from "@angular/core";
+import {
+  IonicPage,
+  NavController,
+  NavParams,
+  ViewController
+} from "ionic-angular";
+import { FirebaseProvider } from "../../providers/firebase/firebase";
+import { FilterProvider } from "../../providers/filter/filter";
 
 /**
  * Generated class for the FiltersModalPage page.
@@ -12,49 +17,41 @@ import {FilterProvider} from '../../providers/filter/filter';
 
 @IonicPage()
 @Component({
-  selector: 'page-filters-modal',
-  templateUrl: 'filters-modal.html',
+  selector: "page-filters-modal",
+  templateUrl: "filters-modal.html"
 })
 export class FiltersModalPage {
-
   filters;
 
-  constructor(private navCtrl: NavController,
-              private navParams: NavParams,
-              private viewCtrl: ViewController,
-              private firebaseProvider: FirebaseProvider,
-              private filterProvider: FilterProvider) {
-  }
+  constructor(
+    private navCtrl: NavController,
+    private navParams: NavParams,
+    private viewCtrl: ViewController,
+    private filterProvider: FilterProvider
+  ) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad FiltersModalPage');
-
+    console.log("ionViewDidLoad FiltersModalPage");
   }
 
   ionViewWillLoad() {
     this.filters = this.filterProvider.filters;
   }
 
-
-
   onClose() {
     this.viewCtrl.dismiss();
   }
 
   onClear() {
-
     for (const key of Object.keys(this.filters)) {
-      this.filters[key].value = '';
+      this.filters[key].value = "";
     }
-
   }
 
   onFilter() {
-
     const filters = {};
 
     for (const key of Object.keys(this.filters)) {
-
       if (this.filters[key].value.length !== 0) {
         filters[key] = this.filters[key].value;
       }
