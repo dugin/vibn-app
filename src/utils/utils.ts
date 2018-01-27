@@ -1,3 +1,3 @@
 export const toLatLng = (lat, lng) => {
-  return {latitude: lat, longitude: lng}
-}
+  return { latitude: lat, longitude: lng };
+};

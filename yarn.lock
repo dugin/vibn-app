@@ -221,6 +221,10 @@
   version "4.5.2"
   resolved "https://registry.yarnpkg.com/@ionic-native/geolocation/-/geolocation-4.5.2.tgz#06597e70a63af4bc0208ddb56808a32f88df41f5"
 
+"@ionic-native/google-maps@^4.5.2":
+  version "4.5.2"
+  resolved "https://registry.yarnpkg.com/@ionic-native/google-maps/-/google-maps-4.5.2.tgz#3f44b3db89fcbef3324c71da27fbfa52e671d935"
+
 "@ionic-native/in-app-browser@^4.5.2":
   version "4.5.2"
   resolved "https://registry.yarnpkg.com/@ionic-native/in-app-browser/-/in-app-browser-4.5.2.tgz#3eebc77cb579292357ef9860fca254dea59ecce8"

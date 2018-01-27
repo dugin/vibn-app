@@ -18,6 +18,20 @@ body {
   font-family: "Trebuchet MS", "Helvetica Neue", sans-serif;
 }
 
+.toolbar-title{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img{
+    margin-right: 5px;
+  }
+
+  .logo-name{
+    font-weight: 400;
+  }
+}
+
 .toolbar-background-ios, .toolbar-background-md {
   background-color: color($colors, primary);
 }
@@ -29,4 +43,5 @@ body {
 .toolbar-title-ios, .toolbar-title-md, .bar-button-default-ios, .bar-button-default-md {
   color: #fff;
 }
+
 

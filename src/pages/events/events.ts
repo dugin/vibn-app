@@ -12,7 +12,6 @@ import { GeolocationProvider } from "../../providers/geolocation/geolocation";
 import "rxjs/add/operator/mergeMap";
 import { toLatLng } from "../../utils/utils";
 import { EVENT_DETAIL_PAGE, FILTERS_MODAL_PAGE } from "../pages.constants";
-import isEmpty from "lodash/isEmpty";
 import { FilterProvider } from "../../providers/filter/filter";
 
 /**
@@ -49,13 +48,30 @@ export class EventsPage {
   getEvents() {
     this.firebaseProvider
       .getAllEvents()
-      .map(events => (this.events = this.filterProvider.events = events))
+      .map(events => {
+        this.filterProvider.events.next(events);
+
+        return (this.events = events);
+      })
       .mergeMap(() => this.geolocationProvider.getUsersLocation())
+      .map(userLocation => {
+        const latLng = toLatLng(
+          userLocation.coords.latitude,
+          userLocation.coords.longitude
+        );
+        this.filterProvider.userLocation.next(latLng);
+        this.filterProvider.userLocation.complete();
+
+        return latLng;
+      })
       .subscribe(userLocation => {
-        this.events = this.filterProvider.events = this.geolocationProvider.setEventsDistance(
-          toLatLng(userLocation.coords.latitude, userLocation.coords.longitude),
+        this.events = this.geolocationProvider.setEventsDistance(
+          userLocation,
           this.events
         );
+
+        this.filterProvider.events.next(this.events);
+        this.filterProvider.events.complete();
       });
   }
 
@@ -70,23 +86,29 @@ export class EventsPage {
     filterModal.present();
 
     filterModal.onDidDismiss(data => {
-      if (!isEmpty(data)) {
-        let shouldShow = true;
+      this.filterProvider
+        .onFilter(data)
+        .subscribe(events => (this.events = events));
 
-        this.events = this.filterProvider.events.filter(e => {
-          for (const key of Object.keys(e.tags)) {
-            let tags = data[key];
-
-            shouldShow = !tags || e.tags[key].some(t => tags.includes(t));
-
-            if (!shouldShow) break;
-          }
-
-          return shouldShow;
-        });
-      } else if (typeof data !== "undefined") {
-        this.events = this.filterProvider.events;
-      }
+      // this.filterProvider.events.subscribe(events => {
+      //   if (!isEmpty(data)) {
+      //     this.events = events.filter(e => {
+      //       for (const key of Object.keys(e.tags)) {
+      //         let tags = data[key];
+      //
+      //         shouldShow = !tags || e.tags[key].some(t => tags.includes(t));
+      //
+      //         if (!shouldShow) break;
+      //       }
+      //
+      //       return shouldShow;
+      //     });
+      //   } else if (typeof data !== "undefined") {
+      //     this.events = events;
+      //   }
+      //
+      //   this.filterProvider.filteredEvents = this.events;
+      // });
     });
   }
 }

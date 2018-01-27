@@ -1,5 +1,9 @@
 import { Injectable } from "@angular/core";
 import { FirebaseProvider } from "../firebase/firebase";
+import { AsyncSubject } from "rxjs/AsyncSubject";
+import isEmpty from "lodash/isEmpty";
+import { Observable } from "rxjs/Observable";
+import { EventModel } from "../../models/Event";
 
 /*
   Generated class for the FilterProvider provider.
@@ -11,7 +15,10 @@ import { FirebaseProvider } from "../firebase/firebase";
 export class FilterProvider {
   filters;
 
-  events;
+  events = new AsyncSubject<any[]>();
+  filteredEvents;
+
+  userLocation = new AsyncSubject();
 
   constructor(private firebaseProvider: FirebaseProvider) {
     console.log("Hello FilterProvider Provider");
@@ -47,5 +54,33 @@ export class FilterProvider {
         .getTags(key)
         .map(resp => resp[this.filters[key].kind]);
     }
+  }
+
+  onFilter(data) {
+    let shouldShow = true;
+
+    return new Observable<EventModel[]>(obs => {
+
+      this.events.subscribe(events => {
+        if (!isEmpty(data)) {
+          this.filteredEvents = events.filter(e => {
+            for (const key of Object.keys(e.tags)) {
+              let tags = data[key];
+
+              shouldShow = !tags || e.tags[key].some(t => tags.includes(t));
+
+              if (!shouldShow) break;
+            }
+
+            return shouldShow;
+          });
+        } else if (typeof data !== "undefined") {
+          this.filteredEvents = events;
+        }
+
+        obs.next(this.filteredEvents);
+        obs.complete();
+      });
+    });
   }
 }

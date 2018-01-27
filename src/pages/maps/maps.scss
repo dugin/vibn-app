@@ -1,0 +1,26 @@
+page-maps {
+  position: relative;
+
+  #map_canvas {
+    position: relative;
+    height: 100%;
+    z-index: 9000;
+  }
+
+  .pgm-html-info-content-frame{
+    height: initial !important;
+    width: 280px !important;
+  }
+  .pgm-html-info-content-box{
+    white-space: normal !important;
+    display: flex !important;
+  }
+
+  .pgm-html-info-tail-right, .pgm-html-info-tail-left{
+    border-color: color($colors, darker-text) transparent transparent !important;
+  }
+
+  .pgm-html-info-tail-erase-border{
+    background-color: transparent !important;
+  }
+}

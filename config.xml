@@ -3,7 +3,7 @@
     <name>Vibn</name>
     <description>Vibn</description>
     <author email="rodrigodugin@gmail.com">Rodrigo Dugin</author>
-    <content src="index.html" />
+    <content original-src="index.html" src="http://192.168.1.103:8100" />
     <access origin="*" />
     <allow-navigation href="http://ionic.local/*" />
     <allow-intent href="http://*/*" />
@@ -106,4 +106,14 @@
     <plugin name="cordova-plugin-geolocation" spec="~2.4.3">
         <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="Para encontrarmos os melhores eventos próximos a você" />
     </plugin>
+    <plugin name="cordova-plugin-googlemaps" spec="~2.1.1">
+        <variable name="API_KEY_FOR_ANDROID" value="AIzaSyCXJ1QWu6TJNoFG0PueuxNy7s_anUIkE4I" />
+        <variable name="API_KEY_FOR_IOS" value="AIzaSyD45Rl65Ztv-Mvu1X2JC2zQqsktI1HnKOU" />
+        <variable name="LOCATION_WHEN_IN_USE_DESCRIPTION" value="Show your location on the map" />
+        <variable name="LOCATION_ALWAYS_USAGE_DESCRIPTION" value="Trace your location on the map" />
+    </plugin>
+    <allow-navigation href="http://192.168.0.24:8101" />
+    <allow-navigation href="http://192.168.1.103:8100" />
+    <allow-navigation href="http://192.168.56.1:8100" />
+    <allow-navigation href="http://192.168.0.24:8100" />
 </widget>

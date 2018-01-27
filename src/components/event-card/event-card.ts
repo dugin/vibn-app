@@ -1,7 +1,6 @@
-import {Component, Input} from '@angular/core';
-import {EventModel} from '../../models/Event';
-import * as moment from 'moment';
-import 'moment/locale/pt-br';
+import { Component, Input } from "@angular/core";
+import { EventModel } from "../../models/Event";
+import { setTime, setWeekDate } from "../../utils/dateHandler";
 
 /**
  * Generated class for the EventCardComponent component.
@@ -10,22 +9,18 @@ import 'moment/locale/pt-br';
  * for more info on Angular Components.
  */
 @Component({
-  selector: 'event-card',
-  templateUrl: 'event-card.html'
+  selector: "event-card",
+  templateUrl: "event-card.html"
 })
 export class EventCardComponent {
-
   @Input() event: EventModel;
 
-  constructor() {
+  constructor() {}
 
-  }
-
-  setTime(day){
-    return moment(day).format('HH:mm');
-
+  setTime(day) {
+    return setTime(day);
   }
   setWeekDate(day) {
-    return moment(day).format('ddd');
+    return setWeekDate(day);
   }
 }

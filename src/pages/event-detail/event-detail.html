@@ -27,16 +27,27 @@
     <event-card [event]="event"></event-card>
 
     <section class="more-info">
+
+      <div class="more-info__maps">
+        <!--<div class="more-info__maps-container">-->
+          <!--<ion-icon name="md-map"></ion-icon>-->
+          <!--<p class="more-info__maps&#45;&#45;text">Mapa</p>-->
+        <!--</div>-->
+
+        <img src="https://maps.googleapis.com/maps/api/staticmap?center={{event.coordinates._lat}},{{event.coordinates._long}}&zoom=15&size=300x200&maptype=roadmap
+&markers=color:purple%7Clabel:V%7C{{event.coordinates._lat}},{{event.coordinates._long}}&key=AIzaSyDaqFoBjEUf9JqMJOo5AJD-iYTUXCpMB1Y" class="more-info__maps-map"
+        >
+      </div>
       <div class="more-info__title">
         <ion-icon ios="ios-menu" md="md-menu"></ion-icon>
         <p class="more-info__title--text">Descrição</p>
       </div>
 
       <div class="more-info__description">
-
         {{event.description}}
-
       </div>
+
+
 
 
     </section>
