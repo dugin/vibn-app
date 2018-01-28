@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "434394179013",
+    "firebase_url": "https://vibn-b0250.firebaseio.com",
+    "project_id": "vibn-b0250",
+    "storage_bucket": "vibn-b0250.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:434394179013:android:46807d12a425fa44",
+        "android_client_info": {
+          "package_name": "com.vibn"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "434394179013-i6qqb2m48qm8cuba5n1hrju7hn2eg3l5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkLXczfDSTaE5LSSvvWVzUWX9gN5c7s58"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

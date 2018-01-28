@@ -17,6 +17,7 @@ import { setEventDate, setTime } from "../../utils/dateHandler";
 import { EVENT_DETAIL_PAGE, FILTERS_MODAL_PAGE } from "../pages.constants";
 import { EventModel } from "../../models/Event";
 import isEqual from "lodash/isEqual";
+import { Observable } from "rxjs/Observable";
 
 /**
  * Generated class for the MapsPage page.
@@ -48,7 +49,6 @@ export class MapsPage {
     this.filterProvider.events
       .mergeMap(e => {
         this.events = e;
-
         return this.filterProvider.userLocation;
       })
       .subscribe(c => {
@@ -78,21 +78,44 @@ export class MapsPage {
   }
 
   loadMap(events) {
-    const mapOptions: GoogleMapOptions = {
-      camera: {
-        target: {
-          lat: this.coordinates.latitude,
-          lng: this.coordinates.longitude
-        },
-        zoom: 15
-      }
-    };
-
-    this.map = GoogleMaps.create("map_canvas", mapOptions);
+    this.map = GoogleMaps.create("map_canvas", this.setMapOptions(events));
 
     this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
       this.setMarkers(events);
     });
+  }
+
+  setMapOptions(events) {
+    if (this.coordinates) {
+      return {
+        camera: {
+          target: {
+            lat: this.coordinates.latitude,
+            lng: this.coordinates.longitude
+          },
+          zoom: 14
+        }
+      };
+    } else if (events && events.length > 0) {
+      return {
+        camera: {
+          target: {
+            lat: events[0].coordinates._lat,
+            lng: events[0].coordinates._long
+          },
+          zoom: 14
+        }
+      };
+    }
+    return {
+      camera: {
+        target: {
+          lat: -22.983748,
+          lng: -43.206229
+        },
+        zoom: 11
+      }
+    };
   }
 
   setMarkers(events) {
@@ -102,7 +125,7 @@ export class MapsPage {
     events.forEach(e => {
       this.map
         .addMarker({
-          icon: "purple",
+          icon: "rebeccapurple",
           animation: "DROP",
           position: this.getRandomCoord(
             e.coordinates._lat,
@@ -148,7 +171,7 @@ export class MapsPage {
     });
   }
 
-  private markerInfoWindow(event) {
+  markerInfoWindow(event) {
     const div = document.createElement("div");
     div.style.cssText =
       "display:flex;flex: 1;flex-direction:column;height:inherit;padding:10px";
@@ -162,7 +185,7 @@ export class MapsPage {
                           ${setEventDate(event.startDate)}  -  
                           ${setTime(event.startDate)}h
                     </span>
-                    <a style="color: #96c77f; font-size: 20px; text-decoration: underline; font-weight: 300"> Detalhes</a> 
+                    <a style="color: #96c77f; font-size: 18px; text-decoration: underline; font-weight: 300"> Detalhes</a> 
               </div>`;
 
     return div;

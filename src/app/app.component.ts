@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { Platform } from "ionic-angular";
 import { StatusBar } from "@ionic-native/status-bar";
 import { SplashScreen } from "@ionic-native/splash-screen";
-import { EVENTS_PAGE, LOGIN_PAGE } from "../pages/pages.constants";
+import { LOGIN_PAGE, TABS_PAGE } from "../pages/pages.constants";
 import { AngularFireAuth } from "angularfire2/auth";
 import { FilterProvider } from "../providers/filter/filter";
 
@@ -26,7 +26,7 @@ export class MyApp {
       this.afAuth.authState.subscribe(auth => {
         console.log(auth);
 
-        this.rootPage = auth ? EVENTS_PAGE : LOGIN_PAGE;
+        this.rootPage = auth ? TABS_PAGE : LOGIN_PAGE;
 
         this.hideSplashScreen();
 

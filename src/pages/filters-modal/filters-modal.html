@@ -22,7 +22,7 @@
 <ion-content padding>
 
 
-  <ion-list >
+  <ion-list  *ngIf="filters">
     <ion-item  *ngFor="let t of ['musicStyle', 'locationRegion', 'partyKind']">
       <ion-label>{{filters[t].name}}</ion-label>
       <ion-select [(ngModel)]="filters[t].value" multiple="{{filters[t].multipleChoice}}" cancelText="cancelar" okText="aplicar">

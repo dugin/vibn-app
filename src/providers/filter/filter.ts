@@ -56,29 +56,27 @@ export class FilterProvider {
     }
   }
 
-  onFilter(data) {
+  onFilter(data): Observable<EventModel[]> {
     let shouldShow = true;
 
-    return new Observable<EventModel[]>(obs => {
-
+    return new Observable(obs => {
       this.events.subscribe(events => {
         if (!isEmpty(data)) {
           this.filteredEvents = events.filter(e => {
             for (const key of Object.keys(e.tags)) {
               let tags = data[key];
-
               shouldShow = !tags || e.tags[key].some(t => tags.includes(t));
-
               if (!shouldShow) break;
             }
 
             return shouldShow;
           });
+          obs.next(this.filteredEvents);
         } else if (typeof data !== "undefined") {
           this.filteredEvents = events;
-        }
+          obs.next(this.filteredEvents);
+        } else obs.next(events);
 
-        obs.next(this.filteredEvents);
         obs.complete();
       });
     });

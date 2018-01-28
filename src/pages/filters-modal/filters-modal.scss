@@ -38,4 +38,13 @@ page-filters-modal {
       flex-grow: 1;
     }
   }
+
+}
+.alert-checkbox-group, .alert-radio-group{
+  border: none !important;
+}
+
+.alert-button-group {
+  box-shadow: 5px 5px 25px 0 rgba(46, 61, 73, .2);
+
 }

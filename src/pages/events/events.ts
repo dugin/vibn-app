@@ -13,7 +13,8 @@ import "rxjs/add/operator/mergeMap";
 import { toLatLng } from "../../utils/utils";
 import { EVENT_DETAIL_PAGE, FILTERS_MODAL_PAGE } from "../pages.constants";
 import { FilterProvider } from "../../providers/filter/filter";
-
+import { Firebase } from "@ionic-native/firebase";
+import "rxjs/add/operator/catch";
 /**
  * Generated class for the EventsPage page.
  *
@@ -36,10 +37,15 @@ export class EventsPage {
     public platform: Platform,
     public geolocationProvider: GeolocationProvider,
     public modalCtrl: ModalController,
-    public filterProvider: FilterProvider
+    public filterProvider: FilterProvider,
+    private firebase: Firebase
   ) {}
 
   ionViewDidLoad() {
+    this.firebase.grantPermission().then(resp => {
+      console.log(resp);
+    });
+
     this.getEvents();
 
     console.log("ionViewDidLoad EventsPage");
@@ -64,15 +70,23 @@ export class EventsPage {
 
         return latLng;
       })
-      .subscribe(userLocation => {
-        this.events = this.geolocationProvider.setEventsDistance(
-          userLocation,
-          this.events
-        );
+      .subscribe(
+        userLocation => {
+          this.events = this.geolocationProvider.setEventsDistance(
+            userLocation,
+            this.events
+          );
 
-        this.filterProvider.events.next(this.events);
-        this.filterProvider.events.complete();
-      });
+          this.filterProvider.events.next(this.events);
+          this.filterProvider.events.complete();
+        },
+        err => {
+          console.log(err);
+          this.filterProvider.events.complete();
+          this.filterProvider.userLocation.next(null);
+          this.filterProvider.userLocation.complete();
+        }
+      );
   }
 
   onEvent(event) {
@@ -89,26 +103,6 @@ export class EventsPage {
       this.filterProvider
         .onFilter(data)
         .subscribe(events => (this.events = events));
-
-      // this.filterProvider.events.subscribe(events => {
-      //   if (!isEmpty(data)) {
-      //     this.events = events.filter(e => {
-      //       for (const key of Object.keys(e.tags)) {
-      //         let tags = data[key];
-      //
-      //         shouldShow = !tags || e.tags[key].some(t => tags.includes(t));
-      //
-      //         if (!shouldShow) break;
-      //       }
-      //
-      //       return shouldShow;
-      //     });
-      //   } else if (typeof data !== "undefined") {
-      //     this.events = events;
-      //   }
-      //
-      //   this.filterProvider.filteredEvents = this.events;
-      // });
     });
   }
 }

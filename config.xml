@@ -3,7 +3,7 @@
     <name>Vibn</name>
     <description>Vibn</description>
     <author email="rodrigodugin@gmail.com">Rodrigo Dugin</author>
-    <content original-src="index.html" src="http://192.168.1.103:8100" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-navigation href="http://ionic.local/*" />
     <allow-intent href="http://*/*" />
@@ -116,4 +116,5 @@
     <allow-navigation href="http://192.168.1.103:8100" />
     <allow-navigation href="http://192.168.56.1:8100" />
     <allow-navigation href="http://192.168.0.24:8100" />
+    <allow-navigation href="http://localhost:8100" />
 </widget>

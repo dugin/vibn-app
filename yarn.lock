@@ -217,6 +217,10 @@
   version "4.5.2"
   resolved "https://registry.yarnpkg.com/@ionic-native/facebook/-/facebook-4.5.2.tgz#98694aa702efa13543563f24176e8a48e98f1247"
 
+"@ionic-native/firebase@^4.5.3":
+  version "4.5.3"
+  resolved "https://registry.yarnpkg.com/@ionic-native/firebase/-/firebase-4.5.3.tgz#6866f28075ab2a8ece2771a21ad3d04f598b9fea"
+
 "@ionic-native/geolocation@^4.5.2":
   version "4.5.2"
   resolved "https://registry.yarnpkg.com/@ionic-native/geolocation/-/geolocation-4.5.2.tgz#06597e70a63af4bc0208ddb56808a32f88df41f5"

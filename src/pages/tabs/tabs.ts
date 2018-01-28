@@ -29,10 +29,8 @@ export class TabsPage {
   ionViewDidLoad() {
     console.log("ionViewDidLoad TabsPage");
 
-    this.filterProvider.events
-      .mergeMap(() => this.filterProvider.userLocation)
-      .subscribe(() => {
-        this.shouldEnableMaps = true;
-      });
+    this.filterProvider.events.subscribe(e => {
+      this.shouldEnableMaps = true;
+    });
   }
 }

@@ -32,6 +32,7 @@
     "@ionic-native/clipboard": "^4.5.2",
     "@ionic-native/core": "^4.5.2",
     "@ionic-native/facebook": "^4.5.2",
+    "@ionic-native/firebase": "^4.5.3",
     "@ionic-native/geolocation": "^4.5.2",
     "@ionic-native/google-maps": "^4.5.2",
     "@ionic-native/in-app-browser": "^4.5.2",

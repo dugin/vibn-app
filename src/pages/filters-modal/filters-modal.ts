@@ -32,11 +32,10 @@ export class FiltersModalPage {
 
   ionViewDidLoad() {
     console.log("ionViewDidLoad FiltersModalPage");
+    this.filters = this.filterProvider.filters;
+
   }
 
-  ionViewWillLoad() {
-    this.filters = this.filterProvider.filters;
-  }
 
   onClose() {
     this.viewCtrl.dismiss();
