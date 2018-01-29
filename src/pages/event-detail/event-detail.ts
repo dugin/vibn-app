@@ -1,4 +1,4 @@
-import { Component, NgZone } from "@angular/core";
+import { Component } from "@angular/core";
 import {
   IonicPage,
   ModalController,
@@ -9,6 +9,7 @@ import {
 import { EventModel } from "../../models/Event";
 import { InAppBrowser } from "@ionic-native/in-app-browser";
 import { COUPON_MODAL_PAGE } from "../pages.constants";
+import { Firebase } from "@ionic-native/firebase";
 
 /**
  * Generated class for the EventDetailPage page.
@@ -30,16 +31,13 @@ export class EventDetailPage {
     public navParams: NavParams,
     public platform: Platform,
     private iab: InAppBrowser,
-    public modalCtrl: ModalController
+    public modalCtrl: ModalController,
+    private firebase: Firebase
   ) {}
 
   ionViewDidLoad() {
     this.event = this.navParams.get("event");
-
-    // console.log({
-    //   lat: this.event.coordinates._lat,
-    //   lng: this.event.coordinates._long
-    // });
+    this.firebase.grantPermission();
   }
 
   onWantIt() {

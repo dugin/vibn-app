@@ -1,9 +1,14 @@
-import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
-import {EventModel} from '../../models/Event';
-import {Clipboard} from '@ionic-native/clipboard';
-import {ToastController} from 'ionic-angular';
-import {InAppBrowser} from '@ionic-native/in-app-browser';
+import { Component } from "@angular/core";
+import {
+  IonicPage,
+  NavController,
+  NavParams,
+  ViewController
+} from "ionic-angular";
+import { EventModel } from "../../models/Event";
+import { Clipboard } from "@ionic-native/clipboard";
+import { ToastController } from "ionic-angular";
+import { InAppBrowser } from "@ionic-native/in-app-browser";
 
 /**
  * Generated class for the CouponModalPage page.
@@ -14,21 +19,25 @@ import {InAppBrowser} from '@ionic-native/in-app-browser';
 
 @IonicPage()
 @Component({
-  selector: 'page-coupon-modal',
-  templateUrl: 'coupon-modal.html',
+  selector: "page-coupon-modal",
+  templateUrl: "coupon-modal.html"
 })
 export class CouponModalPage {
-
   event: EventModel;
 
-  constructor(public navCtrl: NavController, private  viewCtrl: ViewController, private iab : InAppBrowser,
-              public navParams: NavParams, private clipboard: Clipboard, public toastCtrl: ToastController) {
-  }
+  constructor(
+    public navCtrl: NavController,
+    private viewCtrl: ViewController,
+    private iab: InAppBrowser,
+    public navParams: NavParams,
+    private clipboard: Clipboard,
+    public toastCtrl: ToastController
+  ) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CouponModalPage');
+    console.log("ionViewDidLoad CouponModalPage");
 
-    this.event = this.navParams.get('event');
+    this.event = this.navParams.get("event");
 
     console.log(this.event);
   }
@@ -37,7 +46,7 @@ export class CouponModalPage {
     this.viewCtrl.dismiss();
   }
 
-  onLink(){
+  onLink() {
     this.iab.create(this.event.buyLink);
   }
 
@@ -47,17 +56,16 @@ export class CouponModalPage {
         this.presentToast();
       },
       (reject: string) => {
-        alert('Error: ' + reject);
+        alert("Error: " + reject);
       }
     );
   }
 
   presentToast() {
     let toast = this.toastCtrl.create({
-      message: 'Cupom copiado!',
+      message: "Cupom copiado!",
       duration: 3000
     });
     toast.present();
   }
-
 }

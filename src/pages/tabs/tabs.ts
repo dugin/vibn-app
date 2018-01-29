@@ -1,7 +1,6 @@
 import { Component } from "@angular/core";
 import { IonicPage, NavController } from "ionic-angular";
 import { EVENTS_PAGE, MAPS_PAGE } from "../pages.constants";
-import { FilterProvider } from "../../providers/filter/filter";
 import { Store } from "@ngrx/store";
 import { AppState } from "../../models/AppState";
 import { Observable } from "rxjs/Observable";

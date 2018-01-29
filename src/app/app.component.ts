@@ -4,7 +4,6 @@ import { StatusBar } from "@ionic-native/status-bar";
 import { SplashScreen } from "@ionic-native/splash-screen";
 import { LOGIN_PAGE, TABS_PAGE } from "../pages/pages.constants";
 import { AngularFireAuth } from "angularfire2/auth";
-import { FilterProvider } from "../providers/filter/filter";
 
 @Component({
   template: `
@@ -18,7 +17,6 @@ export class MyApp {
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
     private afAuth: AngularFireAuth,
-    public filterProvider: FilterProvider
   ) {
     // used for an example of ngFor and navigation
 

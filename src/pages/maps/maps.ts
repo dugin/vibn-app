@@ -5,10 +5,8 @@ import {
   NavController,
   NavParams
 } from "ionic-angular";
-import { FilterProvider } from "../../providers/filter/filter";
 import {
   GoogleMap,
-  GoogleMapOptions,
   GoogleMaps,
   GoogleMapsEvent,
   HtmlInfoWindow
@@ -16,8 +14,11 @@ import {
 import { setEventDate, setTime } from "../../utils/dateHandler";
 import { EVENT_DETAIL_PAGE, FILTERS_MODAL_PAGE } from "../pages.constants";
 import { EventModel } from "../../models/Event";
-import isEqual from "lodash/isEqual";
 import { Observable } from "rxjs/Observable";
+import * as eventsActions from "../../actions/events.action";
+import * as filtersActions from "../../actions/filter.action";
+import { Store } from "@ngrx/store";
+import { AppState } from "../../models/AppState";
 
 /**
  * Generated class for the MapsPage page.
@@ -32,71 +33,71 @@ import { Observable } from "rxjs/Observable";
   templateUrl: "maps.html"
 })
 export class MapsPage {
-  coordinates;
   events: EventModel[];
   map: GoogleMap;
+
+  events$: Observable<any>;
+  user$: Observable<any>;
+  filter$: Observable<any>;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public filterProvider: FilterProvider,
-    public modalCtrl: ModalController
+    public modalCtrl: ModalController,
+    private store: Store<AppState>
   ) {}
 
   ionViewDidLoad() {
     console.log("ionViewDidLoad MapsPage");
 
-    this.filterProvider.events
-      .mergeMap(e => {
-        this.events = e;
-        return this.filterProvider.userLocation;
-      })
-      .subscribe(c => {
-        this.coordinates = c;
-        this.loadMap(this.events);
-      });
+    this.events$ = this.store.select("events");
+    this.user$ = this.store.select("user");
+    this.filter$ = this.store.select("filter");
+
+    this.setEvents();
   }
 
-  ionViewWillEnter() {
-    console.log("ionViewWillEnter");
-    console.log(this.filterProvider.filteredEvents);
+  setEvents() {
+    this.events$.subscribe(resp => {
+      console.log("events on map");
+      console.log(resp);
 
-    if (
-      this.filterProvider.filteredEvents &&
-      !isEqual(this.filterProvider.filteredEvents, this.events)
-    ) {
-      this.events = this.filterProvider.filteredEvents;
-
-      this.resetMarkers();
-    }
+      if (resp.filteredEvents) {
+        this.events = resp.filteredEvents;
+        this.resetMarkers();
+      } else {
+        this.events = resp.events;
+        this.loadMap(this.events);
+      }
+    });
   }
 
   resetMarkers() {
-    this.map
-      .clear()
-      .then(() => setTimeout(() => this.setMarkers(this.events), 1000));
+    this.map.clear().then(() =>
+      setTimeout(() => {
+        this.map.moveCamera({
+          target: {
+            lat: this.events[0].coordinates._lat,
+            lng: this.events[0].coordinates._long
+          },
+          duration: 1000
+        });
+        this.setMarkers(this.events);
+      }, 500)
+    );
   }
 
   loadMap(events) {
     this.map = GoogleMaps.create("map_canvas", this.setMapOptions(events));
 
+    this.map.setMyLocationEnabled(true);
     this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
       this.setMarkers(events);
     });
   }
 
   setMapOptions(events) {
-    if (this.coordinates) {
-      return {
-        camera: {
-          target: {
-            lat: this.coordinates.latitude,
-            lng: this.coordinates.longitude
-          },
-          zoom: 14
-        }
-      };
-    } else if (events && events.length > 0) {
+    if (events && events.length > 0) {
       return {
         camera: {
           target: {
@@ -164,10 +165,8 @@ export class MapsPage {
     filterModal.present();
 
     filterModal.onDidDismiss(data => {
-      this.filterProvider.onFilter(data).subscribe(events => {
-        this.events = events;
-        this.resetMarkers();
-      });
+      this.store.dispatch(new eventsActions.FilterEvents(data));
+      this.store.dispatch(new filtersActions.SetFilters(data));
     });
   }
 

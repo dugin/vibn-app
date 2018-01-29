@@ -8,7 +8,6 @@ import { AngularFireModule } from "angularfire2";
 import { AngularFireAuthModule } from "angularfire2/auth";
 import { AngularFirestoreModule } from "angularfire2/firestore";
 import { ENV } from "@app/env";
-import { FilterProvider } from "../providers/filter/filter";
 import { FirebaseProvider } from "../providers/firebase/firebase";
 
 import { EffectsModule } from "@ngrx/effects";
@@ -48,7 +47,6 @@ import { Geolocation } from "@ionic-native/geolocation";
   providers: [
     StatusBar,
     SplashScreen,
-    FilterProvider,
     FirebaseProvider,
     GeolocationProvider,
     Geolocation,

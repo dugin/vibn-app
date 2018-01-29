@@ -5,8 +5,10 @@ import {
   NavParams,
   ViewController
 } from "ionic-angular";
-import { FirebaseProvider } from "../../providers/firebase/firebase";
-import { FilterProvider } from "../../providers/filter/filter";
+import { Observable } from "rxjs/Observable";
+import { Store } from "@ngrx/store";
+import { AppState } from "../../models/AppState";
+import Constants from "../../utils/constants";
 
 /**
  * Generated class for the FiltersModalPage page.
@@ -21,23 +23,25 @@ import { FilterProvider } from "../../providers/filter/filter";
   templateUrl: "filters-modal.html"
 })
 export class FiltersModalPage {
-  filters;
+  filters = Constants.FILTERS;
+
+  filter$: Observable<any>;
 
   constructor(
     private navCtrl: NavController,
     private navParams: NavParams,
     private viewCtrl: ViewController,
-    private filterProvider: FilterProvider
+    private store: Store<AppState>
   ) {}
 
   ionViewDidLoad() {
+    this.filter$ = this.store.select("filter");
     console.log("ionViewDidLoad FiltersModalPage");
 
-    this.filterProvider.filter$.subscribe(f => {
-      for (const key of Object.keys(this.filterProvider.filters)) {
-        this.filterProvider.filters[key].array = f[key];
+    this.filter$.subscribe(f => {
+      for (const key of Object.keys(this.filters)) {
+        this.filters[key].array = f[key];
       }
-      this.filters = this.filterProvider.filters;
     });
   }
 
@@ -60,7 +64,6 @@ export class FiltersModalPage {
       }
     }
 
-    this.filterProvider.filters = this.filters;
     this.viewCtrl.dismiss(filters);
   }
 }

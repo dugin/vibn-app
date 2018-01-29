@@ -3,7 +3,7 @@ import "rxjs/add/operator/map";
 import { AngularFirestore } from "angularfire2/firestore";
 import { AngularFireAuth } from "angularfire2/auth";
 import * as moment from "moment";
-import { Constants } from "../../utils/constants";
+import  Constants  from "../../utils/constants";
 
 /*
   Generated class for the FirebaseProvider provider.

@@ -6,6 +6,7 @@ const initialState = {
   musicStyle: [],
   locationRegion: [],
   partyKind: [],
+  filters: {},
   loading: false
 };
 
@@ -20,8 +21,12 @@ export function filterReducer(state = initialState, action: Action) {
       return {
         ...state,
         [key]: action.payload[key][type],
-        loading: false
+        loading: false,
+        filters: {}
       };
+
+    case FilterActions.SET_FILTERS:
+      return { ...state, filters: action.payload };
 
     default:
       return state;

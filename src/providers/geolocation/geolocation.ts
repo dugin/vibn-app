@@ -5,7 +5,7 @@ import { Geolocation } from "@ionic-native/geolocation";
 import { EventModel } from "../../models/Event";
 import { getDistance } from "geolib";
 import { Observable } from "rxjs/Observable";
-import { Constants } from "../../utils/constants";
+import Constants from "../../utils/constants";
 import { toLatLng } from "../../utils/utils";
 
 /*
