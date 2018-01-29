@@ -17,6 +17,12 @@ import { FilterEffects } from "../effects/filter.effects";
 import { filterReducer } from "../reducers/filter.reducer";
 
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
+import { eventsReducer } from "../reducers/events.reducer";
+import { EventsEffects } from "../effects/events.effects";
+import { userReducer } from "../reducers/user.reducer";
+import { UserEffects } from "../effects/user.effects";
+import { GeolocationProvider } from "../providers/geolocation/geolocation";
+import { Geolocation } from "@ionic-native/geolocation";
 
 @NgModule({
   declarations: [MyApp],
@@ -27,8 +33,12 @@ import { StoreDevtoolsModule } from "@ngrx/store-devtools";
     AngularFireAuthModule,
     AngularFirestoreModule,
 
-    StoreModule.forRoot({ filter: filterReducer }),
-    EffectsModule.forRoot([FilterEffects]),
+    StoreModule.forRoot({
+      filter: filterReducer,
+      events: eventsReducer,
+      user: userReducer
+    }),
+    EffectsModule.forRoot([FilterEffects, EventsEffects, UserEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25 // Retains last 25 states
     })
@@ -40,6 +50,8 @@ import { StoreDevtoolsModule } from "@ngrx/store-devtools";
     SplashScreen,
     FilterProvider,
     FirebaseProvider,
+    GeolocationProvider,
+    Geolocation,
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })

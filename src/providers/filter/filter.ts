@@ -6,6 +6,7 @@ import { Observable } from "rxjs/Observable";
 import { EventModel } from "../../models/Event";
 import { Store } from "@ngrx/store";
 import * as filterActions from "./../../actions/filter.action";
+import { AppState } from "../../models/AppState";
 /*
   Generated class for the FilterProvider provider.
 
@@ -13,9 +14,6 @@ import * as filterActions from "./../../actions/filter.action";
   and Angular DI.
 */
 
-interface AppState {
-  filter: any;
-}
 @Injectable()
 export class FilterProvider {
   filters = {

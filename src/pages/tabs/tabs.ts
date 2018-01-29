@@ -2,6 +2,9 @@ import { Component } from "@angular/core";
 import { IonicPage, NavController } from "ionic-angular";
 import { EVENTS_PAGE, MAPS_PAGE } from "../pages.constants";
 import { FilterProvider } from "../../providers/filter/filter";
+import { Store } from "@ngrx/store";
+import { AppState } from "../../models/AppState";
+import { Observable } from "rxjs/Observable";
 
 /**
  * Generated class for the TabsPage tabs.
@@ -21,16 +24,17 @@ export class TabsPage {
 
   shouldEnableMaps = false;
 
-  constructor(
-    public navCtrl: NavController,
-    public filterProvider: FilterProvider
-  ) {}
+  events$: Observable<any>;
+
+  constructor(public navCtrl: NavController, private store: Store<AppState>) {}
 
   ionViewDidLoad() {
     console.log("ionViewDidLoad TabsPage");
 
-    this.filterProvider.events.subscribe(e => {
-      this.shouldEnableMaps = true;
+    this.events$ = this.store.select("events");
+
+    this.events$.subscribe(e => {
+      this.shouldEnableMaps = !e.loading;
     });
   }
 }
