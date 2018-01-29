@@ -40,6 +40,8 @@ export class MapsPage {
   user$: Observable<any>;
   filter$: Observable<any>;
 
+  firstLoad = true;
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -59,16 +61,14 @@ export class MapsPage {
 
   setEvents() {
     this.events$.subscribe(resp => {
-      console.log("events on map");
-      console.log(resp);
-
-      if (resp.filteredEvents) {
-        this.events = resp.filteredEvents;
-        this.resetMarkers();
-      } else {
-        this.events = resp.events;
+      this.events = resp.filteredEvents ? resp.filteredEvents : resp.events;
+      if (this.firstLoad) {
         this.loadMap(this.events);
+      } else {
+        this.resetMarkers();
       }
+
+      this.firstLoad = false;
     });
   }
 
