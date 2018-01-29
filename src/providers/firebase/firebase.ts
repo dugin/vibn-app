@@ -36,6 +36,7 @@ export class FirebaseProvider {
     return this.af
       .collection(Constants.FIREBASE_COLLECTION_TAGS)
       .doc(id)
-      .valueChanges();
+      .valueChanges()
+      .map(resp => ({ [id]: resp }));
   }
 }

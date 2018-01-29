@@ -4,55 +4,64 @@ import { AsyncSubject } from "rxjs/AsyncSubject";
 import isEmpty from "lodash/isEmpty";
 import { Observable } from "rxjs/Observable";
 import { EventModel } from "../../models/Event";
-
+import { Store } from "@ngrx/store";
+import * as filterActions from "./../../actions/filter.action";
 /*
   Generated class for the FilterProvider provider.
 
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
+
+interface AppState {
+  filter: any;
+}
 @Injectable()
 export class FilterProvider {
-  filters;
+  filters = {
+    musicStyle: {
+      value: "",
+      array: null,
+      kind: "name",
+      name: "Músicas",
+      multipleChoice: true
+    },
+    locationRegion: {
+      value: "",
+      array: null,
+      kind: "riodejaneiro",
+      name: "Locais",
+      multipleChoice: true
+    },
+    partyKind: {
+      value: "",
+      array: null,
+      kind: "name",
+      name: "Extras",
+      multipleChoice: false
+    }
+  };
 
   events = new AsyncSubject<any[]>();
   filteredEvents;
 
   userLocation = new AsyncSubject();
 
-  constructor(private firebaseProvider: FirebaseProvider) {
+  filter$: Observable<any>;
+
+  constructor(
+    private firebaseProvider: FirebaseProvider,
+    private store: Store<AppState>
+  ) {
+    this.filter$ = this.store.select("filter");
     console.log("Hello FilterProvider Provider");
 
-    this.filters = {
-      musicStyle: {
-        value: "",
-        array: null,
-        kind: "name",
-        name: "Músicas",
-        multipleChoice: true
-      },
-      locationRegion: {
-        value: "",
-        array: null,
-        kind: "riodejaneiro",
-        name: "Locais",
-        multipleChoice: true
-      },
-      partyKind: {
-        value: "",
-        array: null,
-        kind: "name",
-        name: "Extras",
-        multipleChoice: false
-      }
-    };
+    this.getFilters();
   }
 
-  getAllTags() {
+  getFilters() {
     for (const key of Object.keys(this.filters)) {
-      this.filters[key].array = this.firebaseProvider
-        .getTags(key)
-        .map(resp => resp[this.filters[key].kind]);
+      this.store.dispatch(new filterActions.GetFilters(key));
     }
   }
 

@@ -11,6 +11,13 @@ import { ENV } from "@app/env";
 import { FilterProvider } from "../providers/filter/filter";
 import { FirebaseProvider } from "../providers/firebase/firebase";
 
+import { EffectsModule } from "@ngrx/effects";
+import { StoreModule } from "@ngrx/store";
+import { FilterEffects } from "../effects/filter.effects";
+import { filterReducer } from "../reducers/filter.reducer";
+
+import { StoreDevtoolsModule } from "@ngrx/store-devtools";
+
 @NgModule({
   declarations: [MyApp],
   imports: [
@@ -18,7 +25,13 @@ import { FirebaseProvider } from "../providers/firebase/firebase";
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(ENV.firebaseConfig),
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+
+    StoreModule.forRoot({ filter: filterReducer }),
+    EffectsModule.forRoot([FilterEffects]),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25 // Retains last 25 states
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [MyApp],

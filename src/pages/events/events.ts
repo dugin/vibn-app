@@ -14,13 +14,16 @@ import { toLatLng } from "../../utils/utils";
 import { EVENT_DETAIL_PAGE, FILTERS_MODAL_PAGE } from "../pages.constants";
 import { FilterProvider } from "../../providers/filter/filter";
 import { Firebase } from "@ionic-native/firebase";
-import "rxjs/add/operator/catch";
+
+
 /**
  * Generated class for the EventsPage page.
  *
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
+
+
 
 @IonicPage()
 @Component({
@@ -30,6 +33,8 @@ import "rxjs/add/operator/catch";
 export class EventsPage {
   events: EventModel[];
 
+
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -38,8 +43,11 @@ export class EventsPage {
     public geolocationProvider: GeolocationProvider,
     public modalCtrl: ModalController,
     public filterProvider: FilterProvider,
-    private firebase: Firebase
-  ) {}
+    private firebase: Firebase,
+
+  ) {
+
+  }
 
   ionViewDidLoad() {
     this.firebase.grantPermission().then(resp => {
@@ -50,6 +58,7 @@ export class EventsPage {
 
     console.log("ionViewDidLoad EventsPage");
   }
+
 
   getEvents() {
     this.firebaseProvider

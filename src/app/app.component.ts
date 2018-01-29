@@ -24,13 +24,12 @@ export class MyApp {
 
     this.platform.ready().then(() => {
       this.afAuth.authState.subscribe(auth => {
+        console.log("AUTH");
         console.log(auth);
 
         this.rootPage = auth ? TABS_PAGE : LOGIN_PAGE;
 
         this.hideSplashScreen();
-
-        this.getFilters();
       });
 
       // Okay, so the platform is ready and our plugins are available.
@@ -45,9 +44,5 @@ export class MyApp {
     setTimeout(() => {
       this.splashScreen.hide();
     }, 800);
-  }
-
-  getFilters() {
-    this.filterProvider.getAllTags();
   }
 }

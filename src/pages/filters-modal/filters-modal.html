@@ -26,7 +26,7 @@
     <ion-item  *ngFor="let t of ['musicStyle', 'locationRegion', 'partyKind']">
       <ion-label>{{filters[t].name}}</ion-label>
       <ion-select [(ngModel)]="filters[t].value" multiple="{{filters[t].multipleChoice}}" cancelText="cancelar" okText="aplicar">
-        <ion-option *ngFor="let m of filters[t].array | async">{{m}}</ion-option>
+        <ion-option *ngFor="let m of filters[t].array">{{m}}</ion-option>
       </ion-select>
     </ion-item>
   </ion-list>
